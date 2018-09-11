@@ -1,0 +1,1 @@
+package examples.first2;public interface MyService {    void hi();}

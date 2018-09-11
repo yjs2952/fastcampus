@@ -1,0 +1,43 @@
+package examples.io;
+
+import java.io.*;
+
+public class IOExam01 {
+    public static void main(String[] args) {
+        InputStream in = null;
+        OutputStream out = null;
+
+        try {
+            File file = new File("C:/study/readme.txt");
+            if (!file.isDirectory() && file.exists()) {
+                in = new FileInputStream(file);
+                out = new FileOutputStream("C:\\study\\first\\readme1.out");
+                int readData = 0;
+                // 예를 들어 파일 크기가 3000이면 3번 읽어 들인다.
+                while ((readData = in.read()) != -1) {
+                    out.write(readData);
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // try catch를 두번 해주는 이유는 하나로 묶으면 첫번째 줄에서 에러 날 시 두번째 줄이 실행이 안된다.
+            /*try {
+                in.close();     // 여기서 에러나면
+                out.close();    // 얘가 실행이 안된다.
+            } catch (IOException ioe) {
+            }*/
+
+            try {
+                in.close();
+            } catch (IOException ioe) {
+            }
+            try {
+                out.close();
+            } catch (IOException ioe) {
+            }
+
+        }
+    }
+}

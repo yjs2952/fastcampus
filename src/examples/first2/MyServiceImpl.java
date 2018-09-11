@@ -1,0 +1,1 @@
+package examples.first2;public class MyServiceImpl implements MyService {    private MyDao dao;    MyServiceImpl(MyDao dao){        this.dao = dao;    }    @Override    public void hi() {    }}
