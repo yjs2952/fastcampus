@@ -5,11 +5,31 @@ import java.io.*;
 public class IOExam06 {
     public static void main(String[] args) {
 
-        InputStream in = null;
-        OutputStream out = null;
+        DataInputStream in = null;
+        DataOutputStream out = null;
 
         try {
 
+            int val = 10;
+            boolean bool = true;
+            double db = 15.5;
+
+            FileOutputStream fos = new FileOutputStream("C:/study/data.dat");
+            out = new DataOutputStream(fos);
+
+            out.writeInt(val);
+            out.writeBoolean(bool);
+            out.writeDouble(db);
+
+            in = new DataInputStream(new FileInputStream("C:/study/data.dat"));
+
+            int val1 = in.readInt();
+            boolean bool1 = in.readBoolean();
+            double db1 = in.readDouble();
+
+            System.out.println(val1);
+            System.out.println(bool1);
+            System.out.println(db1);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
